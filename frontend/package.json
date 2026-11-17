@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
-    "build:demo": "vite build --mode demo"
+    "build:demo": "vite build --mode demo",
+    "dev:demo": "vite --mode demo"
   },
   "dependencies": {
     "axios": "^1.19.0",
