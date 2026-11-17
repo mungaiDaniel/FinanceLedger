@@ -1,8 +1,12 @@
-from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime, timezone
+
 from werkzeug.security import check_password_hash, generate_password_hash
 
-db = SQLAlchemy()
+from app.extensions import db
+
+
+def _utcnow():
+    return datetime.now(timezone.utc)
 
 
 class User(db.Model):
@@ -17,6 +21,9 @@ class User(db.Model):
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
+
+    def to_dict(self):
+        return {"username": self.username, "email": self.email}
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
@@ -67,7 +74,7 @@ class Transaction(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=True)
     source_file = db.Column(db.String(255), nullable=True)
     dedupe_hash = db.Column(db.String(64), nullable=False, index=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=_utcnow)
     parent_transaction_id = db.Column(db.Integer, db.ForeignKey("transactions.id"), nullable=True, index=True)
     is_split_parent = db.Column(db.Boolean, nullable=False, default=False)
     split_children = db.relationship("Transaction", backref=db.backref("parent_transaction", remote_side=[id]), lazy=True)
@@ -94,4 +101,4 @@ class Budget(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False, index=True)
     month = db.Column(db.String(7), nullable=False, index=True)  # YYYY-MM
     amount = db.Column(db.Float, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    created_at = db.Column(db.DateTime, default=_utcnow, nullable=False)

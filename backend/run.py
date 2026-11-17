@@ -1,3 +1,4 @@
+"""WSGI entry point: ``flask --app run ...`` or ``gunicorn run:app``."""
 import os
 
 from app import create_app
@@ -5,4 +6,4 @@ from app import create_app
 app = create_app()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", "5001")), debug=False, use_reloader=False)
+    app.run(host="127.0.0.1", port=int(os.environ.get("PORT", "5001")))

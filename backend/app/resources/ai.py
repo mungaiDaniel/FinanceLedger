@@ -1,22 +1,24 @@
-from flask import request
+"""'Ask Benny': natural-language questions answered from aggregated data."""
 from flask_restful import Resource
 
+from app.errors import ApiError
 from app.resources.auth import current_user_id, login_required
-from app.services.ai_assistant import ask_ledger
+from app.services.ai_assistant import AssistantUnavailable, ask_ledger
+from app.validation import json_body
+
+MAX_QUESTION_LENGTH = 1000
 
 
 class AskLedgerResource(Resource):
     method_decorators = [login_required]
 
     def post(self):
-        question = (request.get_json(silent=True) or {}).get("question", "").strip()
-        if not question:
-            return {"error": "Ask a question first."}, 400
-        if len(question) > 1000:
-            return {"error": "Questions must be 1,000 characters or fewer."}, 400
+        question = json_body().get("question")
+        if not isinstance(question, str) or not question.strip():
+            raise ApiError("Ask a question first.")
+        if len(question) > MAX_QUESTION_LENGTH:
+            raise ApiError(f"Questions must be {MAX_QUESTION_LENGTH:,} characters or fewer.")
         try:
-            return {"answer": ask_ledger(question, current_user_id())}
-        except ValueError as error:
-            return {"error": str(error)}, 503
-        except Exception:
-            return {"error": "Ask Benny could not complete that request. Please try again."}, 502
+            return {"answer": ask_ledger(question.strip(), current_user_id())}
+        except AssistantUnavailable as error:
+            raise ApiError(str(error), error.status)
