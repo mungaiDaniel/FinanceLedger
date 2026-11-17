@@ -1,7 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
-
-// The mock simulates network latency; make it instant for tests.
-vi.useFakeTimers({ toFake: ["setTimeout"] });
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 function call(promise) {
   promise.catch(() => {}); // the caller asserts on rejections; avoid "unhandled" noise while timers run
@@ -10,6 +7,8 @@ function call(promise) {
 
 let api;
 beforeEach(async () => {
+  // The mock simulates network latency; make it instant for tests.
+  vi.useFakeTimers({ toFake: ["setTimeout"] });
   vi.resetModules();
   const store = new Map();
   vi.stubGlobal("sessionStorage", {
@@ -18,6 +17,11 @@ beforeEach(async () => {
     removeItem: (key) => store.delete(key),
   });
   api = await import("./index.js");
+});
+
+afterEach(() => {
+  vi.useRealTimers();
+  vi.unstubAllGlobals();
 });
 
 describe("demo auth", () => {
