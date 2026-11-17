@@ -36,8 +36,8 @@ export default function Settings() {
       <div className="settings-card">
         <h2>Data</h2>
         <p className="muted">
-          Your statements are stored in your local PostgreSQL database. Transaction deletion remains available
-          from the transaction API.
+          Your statements are stored in the database configured for this deployment. In demo mode nothing is
+          stored: all data lives in your browser tab and resets on reload.
         </p>
       </div>
     </section>
