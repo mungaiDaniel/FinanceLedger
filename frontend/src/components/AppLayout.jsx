@@ -69,7 +69,8 @@ export default function AppLayout({ user, onLogout }) {
                   onClick={() => {
                     setCommandOpen(false);
                     setCommand("");
-                    item.action ? item.action() : navigate(item.to);
+                    if (item.action) item.action();
+                    else navigate(item.to);
                   }}
                 >
                   {item.label}

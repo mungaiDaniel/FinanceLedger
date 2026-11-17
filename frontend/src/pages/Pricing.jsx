@@ -138,11 +138,11 @@ export default function Pricing() {
           <details>
             <summary>How can I get help?</summary>
             <p>
-              Contact us on{" "}
-              <a href="https://wa.me/254752598087" target="_blank" rel="noreferrer">
-                WhatsApp
+              This is a portfolio project. Reach the author on{" "}
+              <a href="https://github.com/mungaiDaniel" target="_blank" rel="noreferrer">
+                GitHub
               </a>{" "}
-              for support and onboarding questions.
+              with any questions.
             </p>
           </details>
         </div>

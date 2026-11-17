@@ -757,3 +757,8 @@ select option {
 .landing-showcase img, .landing-split > img, .landing-story img { transition: transform .45s ease, filter .45s ease; }
 .landing-showcase:hover img, .landing-split:hover > img, .landing-story:hover img { transform: scale(1.025); filter: saturate(.92) brightness(.88); }
 @media (prefers-reduced-motion: reduce) { .landing-nav, .hero-copy > *, .hero-visual, .hero-photo-wrap, .hero-graphic, .hero-stat, .landing-features article, .landing-showcase, .landing-split, .landing-benefits, .landing-story, .landing-cta { animation: none; opacity: 1; transform: none; } }
+
+/* Demo mode banner (see components/DemoBanner.jsx) */
+.demo-banner { position: sticky; top: 0; z-index: 50; height: 32px; display: flex; align-items: center; justify-content: center; padding: 0 12px; background: #F2B544; color: #101A2A; font-size: 13px; font-weight: 600; text-align: center; }
+body.demo-mode .top-navbar { top: 32px; }
+body.demo-mode .sidebar { top: 32px; min-height: calc(100vh - 32px); }

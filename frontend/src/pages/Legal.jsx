@@ -195,10 +195,9 @@ export default function Legal({ type }) {
         <section>
           <h2>Contact</h2>
           <p>
-            For questions about these policies, contact{" "}
-            <a href="mailto:support@bennyentsoftware.com">support@bennyentsoftware.com</a> or{" "}
-            <a href="https://wa.me/254752598087" target="_blank" rel="noreferrer">
-              WhatsApp +254 752 598 087
+            This is a portfolio project. For questions, contact the author through{" "}
+            <a href="https://github.com/mungaiDaniel" target="_blank" rel="noreferrer">
+              GitHub
             </a>
             .
           </p>

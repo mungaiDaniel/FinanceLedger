@@ -21,9 +21,8 @@ export function SiteFooter() {
         <Link to="/terms">Terms</Link>
         <Link to="/refunds">Refunds</Link>
         <Link to="/cookies">Cookies</Link>
-        <a href="mailto:support@bennyentsoftware.com">Support</a>
-        <a href="https://wa.me/254752598087" target="_blank" rel="noreferrer">
-          WhatsApp
+        <a href="https://github.com/mungaiDaniel" target="_blank" rel="noreferrer">
+          GitHub
         </a>
       </div>
       <small>Copyright {new Date().getFullYear()} Benny Ent Software. All rights reserved.</small>

@@ -15,6 +15,7 @@ import Placeholder from "./pages/Placeholder";
 import Legal from "./pages/Legal";
 import Pricing from "./pages/Pricing";
 import DemoLogin from "./pages/DemoLogin";
+import DemoBanner from "./components/DemoBanner";
 import { ToastProvider } from "./components/Toast";
 import { getCurrentUser, logout } from "./api/client";
 
@@ -41,6 +42,7 @@ function App() {
   if (checkingSession) return <div className="app-loading">Loading Ledger…</div>;
   return (
     <ToastProvider>
+      <DemoBanner />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <Landing />} />

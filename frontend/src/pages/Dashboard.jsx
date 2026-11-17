@@ -43,7 +43,7 @@ export default function Dashboard() {
       setTrend(trendData);
       setTransactions(txnData);
       setCategories(catList);
-    } catch (err) {
+    } catch {
       setErrorMsg("Couldn't reach the backend. Make sure the Flask server is running on port 5001.");
     } finally {
       setLoading(false);

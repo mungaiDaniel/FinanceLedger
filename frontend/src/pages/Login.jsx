@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { login } from "../api/client";
+import { DEMO_MODE } from "../api/config";
+import { login, loginDemo } from "../api/client";
 
 export default function Login({ onLogin }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const [identifier, setIdentifier] = useState("admin");
+  const [identifier, setIdentifier] = useState(DEMO_MODE ? "demo@example.com" : "");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -25,6 +26,19 @@ export default function Login({ onLogin }) {
     }
   }
 
+  async function tryDemo() {
+    setLoading(true);
+    setError("");
+    try {
+      onLogin(await loginDemo());
+      navigate("/dashboard", { replace: true });
+    } catch (requestError) {
+      setError(requestError.response?.data?.error || "The demo could not be started.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <main className="login-page">
       <section className="login-card">
@@ -34,7 +48,11 @@ export default function Login({ onLogin }) {
         </Link>
         <span className="eyebrow">Personal finance</span>
         <h1>Welcome back</h1>
-        <p>Sign in to view your local finance dashboard.</p>
+        <p>
+          {DEMO_MODE
+            ? "Explore Ledger with sample data. No account needed."
+            : "Sign in to view your finance dashboard."}
+        </p>
         <form onSubmit={submit} className="stack-form">
           <label>
             Email or username
@@ -55,13 +73,18 @@ export default function Login({ onLogin }) {
               onChange={(event) => setPassword(event.target.value)}
               autoComplete="current-password"
               required
-              autoFocus
+              autoFocus={!DEMO_MODE}
             />
           </label>
           {error && <div className="login-error">{error}</div>}
           <button className="primary-button" disabled={loading}>
             {loading ? "Signing in…" : "Sign in"}
           </button>
+          {DEMO_MODE && (
+            <button type="button" className="secondary-button" onClick={tryDemo} disabled={loading}>
+              Try Demo
+            </button>
+          )}
         </form>
         <small>
           New to Ledger? <Link to="/register">Create an account</Link>

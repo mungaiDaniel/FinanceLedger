@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { uploadFile } from "../api/client";
-import { useToast } from "./Toast";
+import { useToast } from "./toastContext";
 
 export default function UploadPanel({ onUploadComplete, openRequest }) {
   const [status, setStatus] = useState("idle"); // idle | uploading | success | error

@@ -7,7 +7,7 @@ import {
   updateTransactionCategory,
 } from "../api/client";
 import { formatKES, formatDate } from "../api/format";
-import { useToast } from "./Toast";
+import { useToast } from "./toastContext";
 
 export default function TransactionTable({
   data,
