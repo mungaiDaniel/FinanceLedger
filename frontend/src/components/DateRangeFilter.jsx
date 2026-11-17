@@ -1,19 +1,28 @@
 const PRESETS = [
-  { label: "This month", getRange: () => {
-    const now = new Date();
-    const start = new Date(now.getFullYear(), now.getMonth(), 1);
-    return { start: toISO(start), end: toISO(now) };
-  }},
-  { label: "Last 3 months", getRange: () => {
-    const now = new Date();
-    const start = new Date(now.getFullYear(), now.getMonth() - 2, 1);
-    return { start: toISO(start), end: toISO(now) };
-  }},
-  { label: "This year", getRange: () => {
-    const now = new Date();
-    const start = new Date(now.getFullYear(), 0, 1);
-    return { start: toISO(start), end: toISO(now) };
-  }},
+  {
+    label: "This month",
+    getRange: () => {
+      const now = new Date();
+      const start = new Date(now.getFullYear(), now.getMonth(), 1);
+      return { start: toISO(start), end: toISO(now) };
+    },
+  },
+  {
+    label: "Last 3 months",
+    getRange: () => {
+      const now = new Date();
+      const start = new Date(now.getFullYear(), now.getMonth() - 2, 1);
+      return { start: toISO(start), end: toISO(now) };
+    },
+  },
+  {
+    label: "This year",
+    getRange: () => {
+      const now = new Date();
+      const start = new Date(now.getFullYear(), 0, 1);
+      return { start: toISO(start), end: toISO(now) };
+    },
+  },
   { label: "All time", getRange: () => ({ start: "", end: "" }) },
 ];
 

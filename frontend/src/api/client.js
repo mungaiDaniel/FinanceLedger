@@ -57,7 +57,10 @@ export async function deleteTransaction(id) {
 }
 
 export async function bulkUpdateTransactions(transactionIds, categoryId) {
-  const { data } = await client.patch("/transactions/bulk", { transaction_ids: transactionIds, category_id: categoryId });
+  const { data } = await client.patch("/transactions/bulk", {
+    transaction_ids: transactionIds,
+    category_id: categoryId,
+  });
   return data;
 }
 
@@ -127,7 +130,10 @@ export async function getInsights(month) {
 }
 
 export async function downloadTransactionReport(params, format) {
-  const response = await client.get("/reports/transactions", { params: { ...params, format }, responseType: "blob" });
+  const response = await client.get("/reports/transactions", {
+    params: { ...params, format },
+    responseType: "blob",
+  });
   return response.data;
 }
 

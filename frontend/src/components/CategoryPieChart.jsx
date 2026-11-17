@@ -2,7 +2,12 @@ import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from "recha
 import { formatKES } from "../api/format";
 
 const PALETTE = ["#58B982", "#6BAED6", "#E5B65A", "#F08080", "#AE93E7", "#62B6A7", "#E49B6F", "#B7C0CC"];
-const tooltipStyle = { backgroundColor: "#151F30", border: "1px solid #2A3A52", borderRadius: 8, color: "#F1F5F9" };
+const tooltipStyle = {
+  backgroundColor: "#151F30",
+  border: "1px solid #2A3A52",
+  borderRadius: 8,
+  color: "#F1F5F9",
+};
 
 export default function CategoryPieChart({ data }) {
   if (!data || data.length === 0) {
@@ -27,7 +32,13 @@ export default function CategoryPieChart({ data }) {
             ))}
           </Pie>
           <Tooltip formatter={(value) => formatKES(value)} contentStyle={tooltipStyle} />
-          <Legend layout="vertical" align="right" verticalAlign="middle" iconType="circle" wrapperStyle={{ color: "#A7B4C7" }} />
+          <Legend
+            layout="vertical"
+            align="right"
+            verticalAlign="middle"
+            iconType="circle"
+            wrapperStyle={{ color: "#A7B4C7" }}
+          />
         </PieChart>
       </ResponsiveContainer>
     </div>

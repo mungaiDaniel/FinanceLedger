@@ -22,7 +22,9 @@ export default function UploadPanel({ onUploadComplete, openRequest }) {
       setStatus("success");
       setMessage(
         `Added ${result.inserted} transaction${result.inserted === 1 ? "" : "s"}` +
-          (result.duplicates_skipped > 0 ? ` · skipped ${result.duplicates_skipped} duplicate${result.duplicates_skipped === 1 ? "" : "s"}` : "")
+          (result.duplicates_skipped > 0
+            ? ` · skipped ${result.duplicates_skipped} duplicate${result.duplicates_skipped === 1 ? "" : "s"}`
+            : ""),
       );
       toast(`Imported ${result.inserted} transaction${result.inserted === 1 ? "" : "s"}.`);
       onUploadComplete?.();
@@ -58,16 +60,16 @@ export default function UploadPanel({ onUploadComplete, openRequest }) {
         hidden
         onChange={(e) => handleFile(e.target.files?.[0])}
       />
-      <div className="upload-icon" aria-hidden="true">⤒</div>
+      <div className="upload-icon" aria-hidden="true">
+        ⤒
+      </div>
       <div className="upload-text">
         <strong>
           {status === "uploading" ? "Reading your file…" : "Drop a statement here, or click to browse"}
         </strong>
         <span>CSV or Excel — bank exports, M-Pesa statements, budget sheets</span>
       </div>
-      {message && (
-        <div className={`upload-message ${status}`}>{message}</div>
-      )}
+      {message && <div className={`upload-message ${status}`}>{message}</div>}
     </div>
   );
 }

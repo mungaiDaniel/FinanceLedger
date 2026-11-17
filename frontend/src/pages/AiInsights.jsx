@@ -2,12 +2,92 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { askLedger, getInsights } from "../api/client";
 
-function currentMonth() { return new Date().toISOString().slice(0, 7); }
-function label(type) { return type.replaceAll("_", " "); }
+function currentMonth() {
+  return new Date().toISOString().slice(0, 7);
+}
+function label(type) {
+  return type.replaceAll("_", " ");
+}
 
 export default function AiInsights() {
-  const [insights, setInsights] = useState([]); const [question, setQuestion] = useState(""); const [messages, setMessages] = useState([]); const [loading, setLoading] = useState(false); const [error, setError] = useState("");
-  useEffect(() => { getInsights(currentMonth()).then(setInsights).catch((requestError) => setError(requestError.response?.data?.error || "Couldn't load insights.")); }, []);
-  async function submit(event) { event.preventDefault(); const text = question.trim(); if (!text || loading) return; setQuestion(""); setMessages((items) => [...items, { role: "user", text }]); setLoading(true); setError(""); try { const result = await askLedger(text); setMessages((items) => [...items, { role: "ai", text: result.answer }]); } catch (requestError) { const message = requestError.response?.data?.error || "Ask Ledger couldn't answer right now."; setMessages((items) => [...items, { role: "ai", text: message, error: true }]); } finally { setLoading(false); } }
-  return <section className="page-section ai-insights-page"><header className="ai-page-header"><span className="eyebrow">Benny Ent Software · AI insights</span><h1>What's happening with your money</h1><p>Generated from this month's transactions and your budget settings.</p></header>{error && <div className="error-banner">{error}</div>}<div className="ai-insight-row">{insights.length ? insights.slice(0, 3).map((insight, index) => <article className="ai-insight-card" key={`${insight.type}-${index}`}><span className={`tag ${insight.type === "trending_up" ? "trend" : insight.severity}`}>{label(insight.type)}</span><p>{insight.message}</p><Link to={`/transactions?category=${insight.category_id}&month=${currentMonth()}`}>{insight.type === "possible_duplicate" ? "Compare" : "View transactions"} →</Link></article>) : <article className="ai-insight-card"><span className="tag info">All clear</span><p>There are no alerts for this month yet. Add a budget or upload transactions to start monitoring.</p><Link to="/budgets">Set a budget →</Link></article>}</div><section className="ask-panel"><h3>Ask Benny</h3><div className="chat-list">{messages.map((message, index) => <div className={`chat-bubble ${message.role}${message.error ? " error" : ""}`} key={index}>{message.text}</div>)}{loading && <div className="chat-bubble ai">Thinking…</div>}</div><form className="ask-input-row" onSubmit={submit}><input value={question} onChange={(event) => setQuestion(event.target.value)} placeholder="Ask about your spending, categories, or monthly trend…" /><button disabled={loading}>{loading ? "Asking…" : "Ask"}</button></form></section></section>;
+  const [insights, setInsights] = useState([]);
+  const [question, setQuestion] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    getInsights(currentMonth())
+      .then(setInsights)
+      .catch((requestError) => setError(requestError.response?.data?.error || "Couldn't load insights."));
+  }, []);
+  async function submit(event) {
+    event.preventDefault();
+    const text = question.trim();
+    if (!text || loading) return;
+    setQuestion("");
+    setMessages((items) => [...items, { role: "user", text }]);
+    setLoading(true);
+    setError("");
+    try {
+      const result = await askLedger(text);
+      setMessages((items) => [...items, { role: "ai", text: result.answer }]);
+    } catch (requestError) {
+      const message = requestError.response?.data?.error || "Ask Ledger couldn't answer right now.";
+      setMessages((items) => [...items, { role: "ai", text: message, error: true }]);
+    } finally {
+      setLoading(false);
+    }
+  }
+  return (
+    <section className="page-section ai-insights-page">
+      <header className="ai-page-header">
+        <span className="eyebrow">Benny Ent Software · AI insights</span>
+        <h1>What's happening with your money</h1>
+        <p>Generated from this month's transactions and your budget settings.</p>
+      </header>
+      {error && <div className="error-banner">{error}</div>}
+      <div className="ai-insight-row">
+        {insights.length ? (
+          insights.slice(0, 3).map((insight, index) => (
+            <article className="ai-insight-card" key={`${insight.type}-${index}`}>
+              <span className={`tag ${insight.type === "trending_up" ? "trend" : insight.severity}`}>
+                {label(insight.type)}
+              </span>
+              <p>{insight.message}</p>
+              <Link to={`/transactions?category=${insight.category_id}&month=${currentMonth()}`}>
+                {insight.type === "possible_duplicate" ? "Compare" : "View transactions"} →
+              </Link>
+            </article>
+          ))
+        ) : (
+          <article className="ai-insight-card">
+            <span className="tag info">All clear</span>
+            <p>
+              There are no alerts for this month yet. Add a budget or upload transactions to start monitoring.
+            </p>
+            <Link to="/budgets">Set a budget →</Link>
+          </article>
+        )}
+      </div>
+      <section className="ask-panel">
+        <h3>Ask Benny</h3>
+        <div className="chat-list">
+          {messages.map((message, index) => (
+            <div className={`chat-bubble ${message.role}${message.error ? " error" : ""}`} key={index}>
+              {message.text}
+            </div>
+          ))}
+          {loading && <div className="chat-bubble ai">Thinking…</div>}
+        </div>
+        <form className="ask-input-row" onSubmit={submit}>
+          <input
+            value={question}
+            onChange={(event) => setQuestion(event.target.value)}
+            placeholder="Ask about your spending, categories, or monthly trend…"
+          />
+          <button disabled={loading}>{loading ? "Asking…" : "Ask"}</button>
+        </form>
+      </section>
+    </section>
+  );
 }

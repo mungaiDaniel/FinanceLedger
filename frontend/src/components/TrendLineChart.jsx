@@ -2,7 +2,12 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianG
 import { formatKES, formatMonth } from "../api/format";
 import { EmptyState } from "./CategoryPieChart";
 
-const tooltipStyle = { backgroundColor: "#151F30", border: "1px solid #2A3A52", borderRadius: 8, color: "#F1F5F9" };
+const tooltipStyle = {
+  backgroundColor: "#151F30",
+  border: "1px solid #2A3A52",
+  borderRadius: 8,
+  color: "#F1F5F9",
+};
 
 export default function TrendLineChart({ data }) {
   if (!data || data.length === 0) {
@@ -21,8 +26,22 @@ export default function TrendLineChart({ data }) {
           <YAxis tick={{ fontSize: 12, fill: "#A7B4C7" }} tickFormatter={(v) => `${Math.round(v / 1000)}k`} />
           <Tooltip formatter={(value) => formatKES(value)} contentStyle={tooltipStyle} />
           <Legend wrapperStyle={{ color: "#A7B4C7" }} />
-          <Line type="monotone" dataKey="income" stroke="#58B982" strokeWidth={2} dot={{ r: 3 }} name="Income" />
-          <Line type="monotone" dataKey="expense" stroke="#F08080" strokeWidth={2} dot={{ r: 3 }} name="Expenses" />
+          <Line
+            type="monotone"
+            dataKey="income"
+            stroke="#58B982"
+            strokeWidth={2}
+            dot={{ r: 3 }}
+            name="Income"
+          />
+          <Line
+            type="monotone"
+            dataKey="expense"
+            stroke="#F08080"
+            strokeWidth={2}
+            dot={{ r: 3 }}
+            name="Expenses"
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>
