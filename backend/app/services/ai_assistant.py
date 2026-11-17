@@ -1,4 +1,4 @@
-"""Grounded Gemini integration for the "Ask Benny" feature.
+"""Grounded Gemini integration for the "Ask Ledger" feature.
 
 Only aggregated figures (never raw transaction rows) are sent to the model.
 """
@@ -17,7 +17,7 @@ log = logging.getLogger(__name__)
 
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
 SYSTEM_PROMPT = (
-    "You are Benny, the financial assistant for Benny Ent Software. Answer only using the provided "
+    "You are Ledger's financial assistant. Answer only using the provided "
     "aggregated transaction data. Do not invent amounts or claim access to data not supplied. If the "
     "answer is unavailable, say so plainly. Use concise, helpful prose and US dollar (USD) formatting."
 )
@@ -70,7 +70,7 @@ def build_finance_context(user_id):
 def ask_ledger(question, user_id):
     key = current_app.config.get("GEMINI_API_KEY")
     if not key:
-        raise AssistantUnavailable("Ask Benny is not configured. Set GEMINI_API_KEY on the server.")
+        raise AssistantUnavailable("Ask Ledger is not configured. Set GEMINI_API_KEY on the server.")
 
     prompt = f"Financial context: {json.dumps(build_finance_context(user_id))}\n\nQuestion: {question}"
     payload = {

@@ -41,7 +41,7 @@ export default function AiInsights() {
   return (
     <section className="page-section ai-insights-page">
       <header className="ai-page-header">
-        <span className="eyebrow">Benny Ent Software · AI insights</span>
+        <span className="eyebrow">Ledger · AI insights</span>
         <h1>What's happening with your money</h1>
         <p>Generated from this month's transactions and your budget settings.</p>
       </header>
@@ -70,7 +70,7 @@ export default function AiInsights() {
         )}
       </div>
       <section className="ask-panel">
-        <h3>Ask Benny</h3>
+        <h3>Ask Ledger</h3>
         <div className="chat-list">
           {messages.map((message, index) => (
             <div className={`chat-bubble ${message.role}${message.error ? " error" : ""}`} key={index}>

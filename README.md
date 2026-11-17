@@ -20,7 +20,7 @@
 - **Budgets** per category and month, compared with actual spend.
 - **Rule-based insights**: over-budget alerts, trending categories, unusual transactions, possible duplicate payments.
 - **Reports**: CSV/XLSX transaction export and a one-page monthly PDF.
-- **"Ask Benny"**: optional Gemini-powered Q&A that is sent only aggregated totals, never raw transactions.
+- **"Ask Ledger"**: optional Gemini-powered Q&A that is sent only aggregated totals, never raw transactions.
 - **Demo Mode** for the frontend: a full in-browser mock of the API so the UI can be hosted for free.
 
 ## Tech stack

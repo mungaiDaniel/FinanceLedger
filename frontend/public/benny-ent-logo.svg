@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
-  <title id="title">Benny Ent Software</title><desc id="desc">A stylised B with ascending financial bars</desc>
-  <defs><linearGradient id="brandGradient" x1="32" y1="28" x2="224" y2="228" gradientUnits="userSpaceOnUse"><stop stop-color="#69D19B"/><stop offset="1" stop-color="#7D64D8"/></linearGradient><linearGradient id="barGradient" x1="83" y1="150" x2="182" y2="81" gradientUnits="userSpaceOnUse"><stop stop-color="#F2F5F9"/><stop offset="1" stop-color="#A8E9C6"/></linearGradient></defs>
-  <rect width="256" height="256" rx="60" fill="#101A2A"/>
-  <path d="M73 53h55c38 0 60 16 60 44 0 17-9 30-24 36 20 5 32 20 32 41 0 32-24 51-65 51H73V53Zm45 65c17 0 27-7 27-20 0-12-9-18-26-18H111v38h7Zm7 80c19 0 30-8 30-23 0-15-11-23-31-23h-13v46h14Z" fill="url(#brandGradient)"/>
-  <path d="M112 179v-25h15v25h-15Zm23 0v-46h15v46h-15Zm23 0v-67h15v67h-15Z" fill="url(#barGradient)"/>
-  <path d="M108 145l34-31 23 12 30-35" fill="none" stroke="#F2F5F9" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"/><circle cx="195" cy="90" r="7" fill="#F2F5F9"/>
-</svg>

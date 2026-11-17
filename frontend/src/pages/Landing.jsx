@@ -12,7 +12,7 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div>
-        <strong>Benny Ent Software</strong>
+        <strong>Ledger</strong>
         <p>Clearer financial operations for people and growing businesses.</p>
       </div>
       <div className="footer-links">
@@ -25,7 +25,7 @@ export function SiteFooter() {
           GitHub
         </a>
       </div>
-      <small>Copyright {new Date().getFullYear()} Benny Ent Software. All rights reserved.</small>
+      <small>Copyright {new Date().getFullYear()} Ledger. All rights reserved.</small>
     </footer>
   );
 }
@@ -35,8 +35,8 @@ export default function Landing() {
     <main className="landing-page">
       <nav className="landing-nav">
         <Link className="landing-brand" to="/">
-          <img className="brand-logo" src="/benny-ent-logo.svg" alt="" />
-          Benny Ent Software
+          <img className="brand-logo" src="/ledger-logo.svg" alt="" />
+          Ledger
         </Link>
         <div>
           <Link className="landing-link" to="/pricing">
@@ -59,8 +59,8 @@ export default function Landing() {
             <em>Move with confidence.</em>
           </h1>
           <p>
-            Benny Ent Software turns bank and M-Pesa statements into an organised, secure financial workspace.
-            Import transactions, automate categories, set budgets, uncover insights, and export clear reports.
+            Ledger turns bank and M-Pesa statements into an organised, secure financial workspace. Import
+            transactions, automate categories, set budgets, uncover insights, and export clear reports.
           </p>
           <div className="hero-actions">
             <Link className="primary-button large-button" to="/register">
@@ -84,7 +84,7 @@ export default function Landing() {
             <img src={photos.hero} alt="Financial documents and calculator on a desk" />
             <div className="hero-photo-overlay" />
           </div>
-          <img className="hero-graphic" src={heroGraphic} alt="Benny Ent Software visual mark" />
+          <img className="hero-graphic" src={heroGraphic} alt="Ledger visual mark" />
           <div className="hero-stat">
             <span>One workspace</span>
             <strong>100%</strong>
@@ -113,7 +113,7 @@ export default function Landing() {
           <span className="feature-number">03</span>
           <h2>Turn data into action</h2>
           <p>
-            Use dashboards, exports, and Ask Benny to understand spending patterns and make better next
+            Use dashboards, exports, and Ask Ledger to understand spending patterns and make better next
             decisions.
           </p>
         </article>
@@ -142,12 +142,12 @@ export default function Landing() {
           <span className="eyebrow">Ask better questions</span>
           <h2>Your financial data can answer back.</h2>
           <p>
-            Ask Benny turns your real, aggregated transaction data into focused answers. Understand what
+            Ask Ledger turns your real, aggregated transaction data into focused answers. Understand what
             changed, identify category trends, and get a concise starting point for your next decision.
           </p>
           <div className="quote-card">
             <p>“How much did I spend on transport this month?”</p>
-            <strong>Ask Benny uses only the data in your workspace.</strong>
+            <strong>Ask Ledger uses only the data in your workspace.</strong>
           </div>
         </div>
         <img src={photos.desk} alt="Person reviewing a financial plan at a desk" />
@@ -190,7 +190,7 @@ export default function Landing() {
           <h2>A clearer financial picture, without spreadsheet chaos.</h2>
           <p>
             Track day-to-day money, review monthly performance, and keep decision-ready records in one place.
-            Benny Ent Software is designed for local-first control and straightforward workflows.
+            Ledger is designed for local-first control and straightforward workflows.
           </p>
           <Link className="secondary-button" to="/register">
             Create your workspace

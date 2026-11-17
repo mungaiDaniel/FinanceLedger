@@ -11,7 +11,7 @@ export default function TopNavbar({ range, onMenuToggle, onUpload, onSettings, u
       <button className="menu-button" onClick={onMenuToggle} aria-label="Toggle navigation">
         ☰
       </button>
-      <div className="navbar-brand">Benny Ent Software</div>
+      <div className="navbar-brand">Ledger</div>
       <div className="navbar-range">{rangeText(range)}</div>
       <div className="navbar-actions">
         <button className="upload-button" onClick={onUpload}>

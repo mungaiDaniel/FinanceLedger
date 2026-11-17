@@ -539,7 +539,7 @@ export function downloadMonthlySummary(month) {
   });
 }
 
-// ---------- "Ask Benny" ----------
+// ---------- "Ask Ledger" ----------
 
 export function askLedger(question) {
   return respond(() => {

@@ -28,7 +28,7 @@ const plans = [
     description: "For deeper visibility and planning.",
     features: [
       "Up to 10,000 transactions per month",
-      "Ask Benny AI insights",
+      "Ask Ledger AI insights",
       "Excel and PDF exports",
       "Priority email support",
     ],
@@ -50,7 +50,7 @@ export default function Pricing() {
     <main className="pricing-page">
       <nav className="landing-nav">
         <Link className="landing-brand" to="/">
-          <span className="brand-mark">B</span>Benny Ent Software
+          <span className="brand-mark">L</span>Ledger
         </Link>
         <div>
           <Link className="landing-link" to="/login">

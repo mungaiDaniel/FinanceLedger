@@ -26,7 +26,7 @@ const plans = [
     features: [
       "Up to 10,000 transactions per month",
       "Everything in Starter",
-      "Ask Benny AI insights",
+      "Ask Ledger AI insights",
       "Excel and PDF exports",
       "Priority email support",
     ],
@@ -48,7 +48,7 @@ const content = {
   pricing: {
     title: "Straightforward pricing",
     intro:
-      "Choose the Benny Ent Software plan that fits your financial workflow. Prices are in US dollars and billed monthly.",
+      "Choose the Ledger plan that fits your financial workflow. Prices are in US dollars and billed monthly.",
     sections: [
       [
         "Billing",
@@ -66,8 +66,7 @@ const content = {
   },
   refunds: {
     title: "Refund policy",
-    intro:
-      "We want Benny Ent Software to be a confident choice. This policy explains when a refund may be requested.",
+    intro: "We want Ledger to be a confident choice. This policy explains when a refund may be requested.",
     sections: [
       [
         "14-day first-payment guarantee",
@@ -89,15 +88,15 @@ const content = {
   },
   privacy: {
     title: "Privacy notice",
-    intro: "This notice explains how Benny Ent Software handles personal information and financial data.",
+    intro: "This notice explains how Ledger handles personal information and financial data.",
     sections: [
       [
         "Information we process",
-        "We process account details you provide, uploaded statement data, categories, budgets, and requests sent to Ask Benny. We use this information only to operate and improve the features you choose to use.",
+        "We process account details you provide, uploaded statement data, categories, budgets, and requests sent to Ask Ledger. We use this information only to operate and improve the features you choose to use.",
       ],
       [
         "AI requests",
-        "Ask Benny sends aggregated financial context and your question to Google Gemini to generate an answer. Do not include unnecessary sensitive information in questions.",
+        "Ask Ledger sends aggregated financial context and your question to Google Gemini to generate an answer. Do not include unnecessary sensitive information in questions.",
       ],
       [
         "Storage and security",
@@ -111,11 +110,11 @@ const content = {
   },
   terms: {
     title: "Terms of use",
-    intro: "By using Benny Ent Software, you agree to these terms.",
+    intro: "By using Ledger, you agree to these terms.",
     sections: [
       [
         "Service scope",
-        "Benny Ent Software provides tools for organising and analysing financial records. It is not a bank, accounting firm, investment adviser, tax adviser, or legal adviser.",
+        "Ledger provides tools for organising and analysing financial records. It is not a bank, accounting firm, investment adviser, tax adviser, or legal adviser.",
       ],
       [
         "Your responsibilities",
@@ -133,7 +132,7 @@ const content = {
   },
   cookies: {
     title: "Cookie notice",
-    intro: "Benny Ent Software uses essential browser storage and session cookies to operate the service.",
+    intro: "Ledger uses essential browser storage and session cookies to operate the service.",
     sections: [
       [
         "Essential cookies",
@@ -157,14 +156,14 @@ export default function Legal({ type }) {
     <main className="legal-page">
       <nav className="landing-nav">
         <Link className="landing-brand" to="/">
-          <span className="brand-mark">B</span>Benny Ent Software
+          <span className="brand-mark">L</span>Ledger
         </Link>
         <Link className="secondary-button" to="/">
           Back to home
         </Link>
       </nav>
       <article className="legal-content">
-        <span className="eyebrow">Benny Ent Software</span>
+        <span className="eyebrow">Ledger</span>
         <h1>{page.title}</h1>
         <p className="legal-intro">{page.intro}</p>
         {type === "pricing" && (

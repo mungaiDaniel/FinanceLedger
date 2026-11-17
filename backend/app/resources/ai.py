@@ -1,4 +1,4 @@
-"""'Ask Benny': natural-language questions answered from aggregated data."""
+"""'Ask Ledger': natural-language questions answered from aggregated data."""
 from flask_restful import Resource
 
 from app.errors import ApiError
